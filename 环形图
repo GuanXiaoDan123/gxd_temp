@@ -1,7 +1,11 @@
 var labelData = [];
 var labelData1 = [];
+const aa = 100
+const bb = 200
+const max = Math.max(aa,bb)
+
 // 内圈总数值
-for (var i = 0; i < 100; ++i) {
+for (var i = 0; i < max; ++i) {
     labelData.push({
         value: 1,
         name: i,
@@ -14,7 +18,7 @@ for (var i = 0; i < 100; ++i) {
 }
 // 内圈实际数据
 for (var i = 0; i < labelData.length; ++i) {
-    if (labelData[i].name < 50) {
+    if (labelData[i].name < aa) {
         labelData[i].itemStyle = {
             normal: {
                 color: new echarts.graphic.LinearGradient(
@@ -34,7 +38,7 @@ for (var i = 0; i < labelData.length; ++i) {
         }
     }
 }
-for (var i = 0; i < 150; ++i) {
+for (var i = 0; i < max; ++i) {
     labelData1.push({
         value: 1,
         name: i,
@@ -46,7 +50,7 @@ for (var i = 0; i < 150; ++i) {
     });
 }
 for (var i = 0; i < labelData1.length; ++i) {
-    if (labelData1[i].name < 150) {
+    if (labelData1[i].name < max) {
         labelData1[i].itemStyle = {
             normal: {
                 color: new echarts.graphic.LinearGradient(
@@ -130,12 +134,12 @@ option = {
             name: '',
             type: 'bar',
             roundCap: true,
-            barWidth: 60,
+            barWidth: 100,
             showBackground: true,
             backgroundStyle: {
                 color: '#2e2856',
             },
-            data: [90],
+            data: [100 * bb / max],
             coordinateSystem: 'polar',
             itemStyle: {
                 normal: {
