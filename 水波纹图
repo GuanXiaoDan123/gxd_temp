@@ -1,0 +1,103 @@
+var num1 = 0.1;
+
+// const color = 'rgba(69, 229, 155, 0.3)''rgba(0, 155, 219, .0.3)'
+let color = 'rgba(251, 173, 23, 0.3)'
+let textColor = 'rgba(251, 173, 23, 1)'
+let circleColor = 'rgba(251, 173, 23, 0.48)'
+if(num1 >= 0.9) {
+    color = 'rgba(69, 229, 155, 0.3)'
+    textColor = 'rgba(69, 229, 155, 1)'
+ circleColor = 'rgba(69, 229, 155,0.48)'
+} else if(num1 >= 0.7 && num1 < 0.9) {
+    color = 'rgba(251, 173, 23, 0.3)'
+    textColor = 'rgba(251, 173, 23, 1)'
+ circleColor = 'rgba(251, 173, 23, 0.48)'
+} else if(num1 < 0.7) {
+    color = 'rgba(227, 76, 76, 0.3)'
+    textColor = 'rgba(227, 76, 76,1)'
+ circleColor = 'rgba(227, 76, 76,0.48)'
+}
+
+
+option = {
+    title: {
+        text: (num1 * 100).toFixed(2) + '%' + '\n' + '完成审批',
+        textStyle: {
+            fontWeight: 'normal',
+            fontSize: 18,
+            color: textColor,
+        },
+        x: 'center',
+        y: '40%',
+    },
+    series: [
+        {
+            type: 'liquidFill',
+            radius: '80%',
+            center: ['50%', '50%'],
+            data: [num1],
+            color: color,
+            backgroundStyle: {
+                borderWidth: 20,
+                color: color,
+            },
+            label: {
+                normal: {
+                    formatter: '',
+                },
+            },
+            outline: {
+                show: false,
+            },
+        },
+        {
+            type: 'pie',
+            center: ['50%', '50%'],
+            radius: ['90%', '80%'],
+            hoverAnimation: false,
+            data: [
+                {
+                    name: '',
+                    value: (num1 * 100).toFixed(2),
+                    labelLine: {
+                        show: false,
+                    },
+                    itemStyle: {
+                        color: textColor,
+                    },
+                    emphasis: {
+                        labelLine: {
+                            show: false,
+                        },
+                        itemStyle: {
+                            color: '#5886f0',
+                        },
+                    },
+                },
+                {
+                    //画剩余的刻度圆环
+                    name: '',
+                    value: 100 - (num1 * 100).toFixed(2),
+                    itemStyle: {
+                        color: circleColor,
+                    },
+                    label: {
+                        show: false,
+                    },
+                    labelLine: {
+                        show: false,
+                    },
+                    emphasis: {
+                        labelLine: {
+                            show: false,
+                        },
+                        itemStyle: {
+                            color: '#ffffff',
+                        },
+                    },
+                },
+            ],
+        },
+    ],
+};
+
