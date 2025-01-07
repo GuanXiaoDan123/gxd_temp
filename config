@@ -1,0 +1,131 @@
+var data = 70; //数值大小
+var max = 100; //满刻度大小
+option = {
+    title: {
+        text: '-AQI-',
+        top: '40%',
+        left: 'center',
+        textStyle: {
+            color: '#fff',
+            fontSize: 18
+        }
+    },
+    "color": ["rgba(0,0,0,0)"],
+    "series": [
+        // 内层圆
+         {
+            name: 'bg',
+            type: 'pie',
+            clockWise: false, //顺时加载
+            hoverAnimation: false, //鼠标移入变大
+            center: ['50%', '50%'],
+            radius: ['40%', '0%'],
+            color: ['rgba(0,255,0,0.25)', 'none'],
+            z: -5,
+            label: {
+                normal: {
+                    show: false
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            data: [{
+                value: 10,
+                name: '占位',
+            }]
+        },
+        { // 内层圆圈
+            name: 'Line 2',
+            type: 'pie',
+            clockWise: false, //顺时加载
+            hoverAnimation: false, //鼠标移入变大
+            center: ['50%', '50%'],
+            radius: ['40%', '40%'],
+            itemStyle: {
+                normal: {
+                    borderColor: '#0f0',
+                    borderWidth:10,
+                    label: {
+                        show: false
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                }
+            },
+            data: [{
+                value: 10,
+                name: '',
+            }]
+        },
+        // 外层百分比
+        {
+        "type": "pie",
+        "center": ["50%", "50%"],
+        "radius": ["48%", "50%"],
+        "hoverAnimation": false,
+
+        "data": [{
+                "name": "",
+                "value": data,
+                "itemStyle": {
+                    "normal": {
+                        "color": new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            "offset": 0.05,
+                            "color": '#cf3'
+                        },{
+                            "offset": 0.5,
+                            "color": '#39f'
+                        },{
+                            "offset": 1,
+                            "color": '#f00'
+                        }]),
+                    }
+                },
+                "label": {
+                    "show": true,
+                    "position": "center",
+                    "color": "#fff",
+                    "fontSize": 38,
+                    "fontWeight": "bold",
+                    "formatter": function(o) {
+                        return data
+                    }
+                },
+                labelLine: {
+                    show: false,
+                    emphasis: {
+                        show: false
+                    }
+                }
+            },
+            { //画中间的图标
+                "name": "",
+                "value": 0,
+                "label": {
+                    position: 'inside',
+                    backgroundColor: '#f00',
+                    width: 20,
+                    height: 20,
+                    borderRadius: 20,
+                    padding: 20
+                }
+            }, { //画剩余的刻度圆环
+                "name": "",
+                "value": max - data,
+                "label": {
+                    show: false
+                },
+                labelLine: {
+                    show: false,
+                    emphasis: {
+                        show: false
+                    }
+                },
+            }
+        ]
+    }]
+}
