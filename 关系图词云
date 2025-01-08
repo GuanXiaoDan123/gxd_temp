@@ -1,0 +1,72 @@
+
+let fontSizeList = [18,20]
+let fontSizeListLen = fontSizeList.length
+let customLabel = {
+    color: '#fff',
+    fontSize: fontSizeList[Math.floor(Math.random()*fontSizeListLen)]
+}
+let canDraggable = true
+option = {
+    backgroundColor: '#ffa940',
+    series: [
+        {
+            type: 'graph',
+            layout: 'force',
+            force: {
+                repulsion:100,
+                edgeLength: [10, 50]
+            },
+            scaleLimit:{min:2},
+            gridSize: 50,
+            symbolSize: 100,
+            itemStyle:{
+                color:"rgba(0,0,0,0)"
+            },
+            label: {
+                show: true,
+                color:'#fff',
+                fontSize: 14
+            },
+            data: [
+                {
+                    name: '平台基础应用',
+                    "draggable": canDraggable,
+                    value: 0,
+                    x:0,
+                    y:0,
+                    label: {
+                        fontSize: fontSizeList[Math.floor(Math.random()*fontSizeListLen)]
+                    }
+                },
+                {
+                    name: '生产管理应用',
+                    "draggable": canDraggable,
+                    value: 0,
+                    x:100,
+                    y:20,
+                    label: {
+                        fontSize: fontSizeList[Math.floor(Math.random()*fontSizeListLen)]
+                    }
+                },
+                {
+                    name: '智能套件应用',
+                    "draggable": canDraggable,
+                    value: 0,
+                    x:100,
+                    y:-20,
+                    label: {
+                        fontSize: fontSizeList[Math.floor(Math.random()*fontSizeListLen)]
+                    }
+                },
+                {
+                    name: '自动控制应用',
+                    "draggable": canDraggable,
+                    value: 0,
+                    label: {
+                        fontSize: fontSizeList[Math.floor(Math.random()*fontSizeListLen)]
+                    }
+                },
+            ]
+        }
+    ]
+}
